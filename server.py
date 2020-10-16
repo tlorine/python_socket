@@ -2,7 +2,7 @@ import socket
 from threading import Thread
 
 HOST = socket.gethostbyname(socket.gethostname())
-PORT = 10003
+PORT = 10002
 
 users_list = dict()
 
