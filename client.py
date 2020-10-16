@@ -2,16 +2,29 @@
 # -*- coding: utf-8 -*-
 
 import socket
+from threading import Thread
 
-HOST = "192.168.31.17"
+def chat_wind():
+    while chat_run == True:
+        data = sock.recv(1024).decode()
+        if data == "/exit":
+            break
+        print(data)
+
+HOST = "192.168.31.93"
 PORT = 10003
+chat_run = True
 
 sock = socket.socket()
 sock.connect((HOST, PORT))
+print(sock.recv(1024).decode())
+sock.send(input().encode())
+chat = Thread(target=chat_wind, args=())
+chat.start()
 while True:
-    sock.send(input("введите число: ").encode())
-    data = sock.recv(1024).decode()
-    if not data:
+    mess = input("MES: ")
+    sock.send(mess.encode())
+    if mess == "/exit":
         break
-    print(data)    
+chat.join()
 sock.close()
