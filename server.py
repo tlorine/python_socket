@@ -19,11 +19,11 @@ def mailing_proc(conn, users_list):
             break
         for key in users_list:
             if key != user_name:
-                users_list[key].send(f"{user_name}:\t{data}\n".encode())
+                users_list[key].send(f"{user_name}:\t{data}".encode())
 
 sock = socket.socket() # создания сокета
 sock.bind((HOST, PORT)) #связать с хостом и портом 
-sock.listen(2) #cокет теперь слушает подлючения (принимает 1 аргумент - сколько подклчений возможно за раз)
+sock.listen(3) #cокет теперь слушает подлючения (принимает 1 аргумент - сколько подклчений возможно за раз)
 while True:
     conn, addr = sock.accept() #ждет клиента. возращает новый сокет и номер клиента
     conn.send("Enter Login:".encode())

@@ -22,7 +22,7 @@ sock.send(input().encode())
 chat = Thread(target=chat_wind, args=())
 chat.start()
 while True:
-    mess = input("MES: ")
+    mess = input()
     sock.send(mess.encode())
     if mess == "/exit":
         break
