@@ -12,7 +12,7 @@ def chat_wind():
         print(data)
 
 HOST = "192.168.31.93"
-PORT = 10003
+PORT = 10000
 chat_run = True
 
 sock = socket.socket()
@@ -23,8 +23,8 @@ chat = Thread(target=chat_wind, args=())
 chat.start()
 while True:
     mess = input()
-    sock.send(mess.encode())
     if mess == "/exit":
+        sock.send(mess.encode())
         break
 chat.join()
 sock.close()
